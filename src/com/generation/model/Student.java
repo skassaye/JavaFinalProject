@@ -23,7 +23,10 @@ public class Student
 
     public void enrollToCourse( Course course )
     {
-        //TODO implement this method
+        //TODO implement this method(check if the student is already enrolled in course, if not register the course using the registerApprovedCourse method below
+        if(!isAttendingCourse(course.getCode())){
+            registerApprovedCourse(course);
+        }
     }
 
     public void registerApprovedCourse( Course course )
@@ -34,7 +37,14 @@ public class Student
 
     public boolean isAttendingCourse( String courseCode )
     {
-        //TODO implement this method
+        //TODO implement this method (this is a method that checks whether a student is attending a course, input is
+        // courseCode so, we can run a loop for each element in courses, it gets the course Module from course, gets the prerequisites and check if courseCode is in
+        // present for all courses)
+        for (Course course: courses){
+            if (course.getModule().getPrerequisites().containsKey(courseCode)){
+                return true;
+            }
+        }
         return false;
     }
 
@@ -43,10 +53,17 @@ public class Student
     {
         return average;
     }
+    @Override
+    public List<Course> getApprovedCourses(){
+        List<Course> ListOfApprovedCourses = new ArrayList<>(approvedCourses.values());
+        return ListOfApprovedCourses;
+    }
 
     @Override
     public String toString()
     {
         return "Student {" + super.toString() + "}";
     }
+
+
 }

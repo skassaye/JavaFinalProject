@@ -45,7 +45,7 @@ public class CourseService
         courses.put( course.getCode(), course );
     }
 
-    public Course getCourse( String code )
+    public Course getCourse(String code)
     {
         if ( courses.containsKey( code ) )
         {
