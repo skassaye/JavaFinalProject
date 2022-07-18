@@ -6,5 +6,5 @@ public interface Evaluation
 {
     double getAverage();
 
-
+List<Course> getApprovedCourses();
 }
